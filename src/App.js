@@ -1,21 +1,21 @@
 import React from 'react';
 import './App.css';
-import HomePage from './pages/homepage.component';
-import { Route, Switch } from 'react-router-dom';
+
+import { Switch, Route } from 'react-router-dom';
+
+import Header from './components/header/header.component';
+import HomePage from './pages/homepage/homepage.component';
+import ShopPage from './pages/shoppage/shop.component';
+import SignInAndSignUp from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 
 function App() {
-
-  const HatPage = () => (
-  	<div>
-	    <h1> Hat's Page </h1>
-  	</div>
-  )	
-
   return (
     <div>
+      <Header />
       <Switch>
         <Route exact path='/' component={HomePage} />
-        <Route path='/hats' component={HatPage} />
+        <Route path='/shop' component={ShopPage} />
+        <Route path='/signin' component={SignInAndSignUp} />
       </Switch>
     </div>
   );
