@@ -30,7 +30,10 @@ class SignIn extends React.Component {
             await auth.signInWithEmailAndPassword(email,password);
             this.setState({ email:'', password:'' })
 
-        } catch(err) { console.log(err) }
+        } catch(err) { 
+            console.log(err); 
+            alert(err.message);
+        }
     }
 
    render () {
