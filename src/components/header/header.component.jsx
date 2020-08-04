@@ -38,6 +38,7 @@ const Header = ({ currentUser, hidden }) => (
     </div>
 );
 
+// user y cart son los keys definidos en el root reducer
 const mapStateToProps = ({ user: {currentUser}, cart: {hidden}}) => ({
     currentUser,
     hidden
