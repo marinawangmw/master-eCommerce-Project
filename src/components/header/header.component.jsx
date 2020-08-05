@@ -5,8 +5,11 @@ import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
 import { ReactComponent as Logo } from '../../assets/crown.svg';
-import { Link } from 'react-router-dom';
 import { auth } from '../../firebase/firebase.utils';
+import { createStructuredSelector } from 'reselect';
+import { selectCartHidden } from '../../redux/cart/cart.selectors';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const Header = ({ currentUser, hidden }) => (
@@ -39,9 +42,9 @@ const Header = ({ currentUser, hidden }) => (
 );
 
 // user y cart son los keys definidos en el root reducer
-const mapStateToProps = ({ user: {currentUser}, cart: {hidden}}) => ({
-    currentUser,
-    hidden
+const mapStateToProps = createStructuredSelector({
+    currentUser: selectCurrentUser,
+    hidden: selectCartHidden
 })
 
 export default connect(mapStateToProps)(Header);
