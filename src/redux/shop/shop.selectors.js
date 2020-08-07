@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import memoize from 'lodash.memoize';
 
 /*const collection_id_map =  {
     hats: 1,
@@ -21,11 +22,11 @@ export const selectCollectionsForPreview  = createSelector(
     collections => Object.keys(collections).map(key => collections[key]) //devuelve todos los values dado todos los keys (en array)
 )
 
-export const selectCollection = collectionUrlParam =>
+export const selectCollection = memoize((collectionUrlParam) =>
   createSelector(
     [selectCollections],
     collections => collections[collectionUrlParam]
-  );
+  ));
 
 // solo selecciono las secciones sin pasar los arrays de items (mas escalable si se llega a crecer)
 export const selectSections  = createSelector(
