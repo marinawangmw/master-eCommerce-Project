@@ -7,9 +7,9 @@ import { selectCollections } from '../../redux/shop/shop.selectors';
 
 import './directory.styles.scss';
 
-const Directory = ({ collections }) => (
+const Directory = ({ sections }) => (
         <div className='directory-menu'>
-            {collections.map(({ id, ...otherProps }) => (
+            {sections.map(({ id, ...otherProps }) => (
                 <MenuItem key={id} {...otherProps} />
                 )) 
             }
@@ -18,7 +18,7 @@ const Directory = ({ collections }) => (
 
 
 const mapStateToProps = createStructuredSelector({
-    collections: selectCollections
+    sections: selectCollections
 })
 
 export default connect(mapStateToProps)(Directory);
